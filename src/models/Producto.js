@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
       },
       descripcion:{
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
       },
       categorias:{
         type: DataTypes.ARRAY(DataTypes.STRING),
