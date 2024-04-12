@@ -8,7 +8,7 @@ async function deleteClientById(req, res){
 
 
     const {id} = req.query;
-    const estado = false; 
+    const borrado = true; 
     try {
         const cliente = await Cliente.findByPk(id)
         
@@ -16,7 +16,7 @@ async function deleteClientById(req, res){
             
             return res.status(404).json({ message: error.message });
         }
-        await cliente.update({ estado });
+        await cliente.update({ borrado });
 
 
         return res.status(200).json({message: "cliente borrado existosamente"})

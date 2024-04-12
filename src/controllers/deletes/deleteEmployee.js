@@ -8,7 +8,7 @@ async function deleteEmpleadoById(req, res){
 
 
     const {id} = req.query;
-    const estado = false; 
+    const borrado = true;
     try {
         const empleado = await Empleado.findByPk(id)
         
@@ -16,7 +16,7 @@ async function deleteEmpleadoById(req, res){
             
             return res.status(404).json({ message: error.message });
         }
-        await empleado.update({ estado });
+        await empleado.update({ borrado });
 
 
         return res.status(200).json({message: "empleado borrado existosamente"})

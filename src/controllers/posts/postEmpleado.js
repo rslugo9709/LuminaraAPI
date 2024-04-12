@@ -14,6 +14,13 @@ async function postEmpleado(req, res){
         day: '2-digit',
         year: 'numeric'
       });
+
+    console.log("recibe la info")
+    console.log(objeto);
+    //si falta algun dato se rechaza
+    if(!nombre || !telefono || !correo  || !direccion || !cargo || !salario ){
+        return res.status(401).send("Missing info");
+    }
     let objeto = {
         nombre: nombre,
         telefono: telefono,
@@ -21,13 +28,11 @@ async function postEmpleado(req, res){
         salario: salario,
         cargo: cargo,
         direccion: direccion,
-        fechaIngreso: formattedDate
+        fechaIngreso: fechaIngreso,
+        
     }
-    console.log("recibe la info")
-    console.log(objeto);
-    //si falta algun dato se rechaza
-    if(!nombre || !telefono || !correo  || !direccion || !cargo || !salario ){
-        return res.status(401).send("Missing info");
+    if(!fechaIngreso){
+        fechaIngreso = formattedDate
     }
     console.log("se verifica que no falte nada")
     let existencia = await revisionExistencia(objeto.nombre)

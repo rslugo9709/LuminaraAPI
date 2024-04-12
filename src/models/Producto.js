@@ -31,6 +31,11 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: true,
         defaultValue: true
+      },
+      borrado: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true,
+        defaultValue: false
       }
   
   

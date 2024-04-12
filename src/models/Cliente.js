@@ -9,7 +9,15 @@ module.exports = (sequelize) => {
         primaryKey: true,
         allowNull: false
       },
-      
+      tDocumento: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      nDocumento: {
+        type: DataTypes.STRING,
+        allowNull: false
+      }
+      ,
       nombre: {
         type: DataTypes.STRING,
         unique: true,
@@ -27,6 +35,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false
       },
+      tPago:{
+        type:DataTypes.STRING,
+        allowNull: false
+      },
       activoDesde: {
         type: DataTypes.DATEONLY,
         allowNull: false
@@ -35,6 +47,11 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: true,
         defaultValue: true
+      }, 
+      borrado: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true,
+        defaultValue: false
       }
   
   

@@ -8,7 +8,7 @@ async function deleteProductById(req, res){
 
 
     const {id} = req.query;
-    const estado = false; 
+    const borrado = true; 
     try {
         const producto = await Producto.findByPk(id)
         
@@ -16,7 +16,7 @@ async function deleteProductById(req, res){
             
             return res.status(404).json({ message: error.message });
         }
-        await producto.update({ estado });
+        await producto.update({ borrado });
 
 
         return res.status(200).json({message: "producto borrado existosamente"})
