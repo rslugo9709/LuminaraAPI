@@ -33,11 +33,16 @@ module.exports = (sequelize) => {
       },
       salario:{
         type: DataTypes.FLOAT,
-        allowNull: false
+        allowNull: false  
       },
       cargo:{
         type: DataTypes.STRING,
         allowNull: false
+      },
+      activo:{
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        default: true
       }
   
   

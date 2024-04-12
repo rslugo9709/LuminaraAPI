@@ -1,31 +1,31 @@
 const axios = require("axios");
 const { Op } = require('sequelize');
 
-const {Cliente, Empleado} = require("../db");
+const {Cliente,Producto, Empleado} = require("../../db");
 
-async function getEmpleadoName(req, res){
+async function getProductName(req, res){
 
 
     const {name} = req.query;
     const fName= name.toLowerCase()
 
     try {
-        const empleado = await Empleado.findAll({
+        const productos = await Producto.findAll({
             where: {
                 name:{
                     [Op.iLike]: `%${fName}%`
                 }
             },
             include: [
-                {
-                    model: Cliente,
+                { 
+                    model: Producto,
                     attributes: ["id", "nombre"]
                 }
             ],
             limit: 15
         })
 
-        return res.status(200).json(empleado)
+        return res.status(200).json(productos)
     } catch (error) {
         
         res.status(500).json({message: error.message})
@@ -35,4 +35,4 @@ async function getEmpleadoName(req, res){
 }
 
 
-module.exports = {getEmpleadoName};
+module.exports = {getProductName};

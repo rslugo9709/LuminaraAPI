@@ -1,14 +1,14 @@
 const axios = require("axios");
 const { Op } = require('sequelize');
 
-const {Cliente, Producto} = require("../db");
+const {Cliente, Empleado} = require("../../db");
 
-async function getProducts(req, res){
+async function getEmpleados(req, res){
 
 
 
     try {
-        const productos = await Producto.findAll({
+        const empleados = await Empleado.findAll({
             
             include: [
                 {
@@ -18,7 +18,7 @@ async function getProducts(req, res){
             ],
         })
 
-        return res.status(200).json(productos)
+        return res.status(200).json(empleados)
     } catch (error) {
         
         res.status(500).json({message: error.message})
@@ -28,4 +28,4 @@ async function getProducts(req, res){
 }
 
 
-module.exports = {getProducts};
+module.exports = {getEmpleados};

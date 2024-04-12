@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const { Sequelize } = require('sequelize');
-const {Cliente, Producto} = require("../db");
+const {Cliente, Producto} = require("../../db");
 
 async function postProducto(req, res){
 

@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
         unique: true,
         allowNull: false,
       },
-      fabricante:{
+      TipoServicio:{
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -23,17 +23,12 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      categorias:{
-        type: DataTypes.ARRAY(DataTypes.STRING),
+      precio:{
+        type: DataTypes.STRING,
         allowNull: false
       },
-      stock: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
-      },
-      uVendidas:{
-        type: DataTypes.INTEGER,
+      estado: {
+        type: DataTypes.BOOLEAN,
         allowNull: true,
         defaultValue: 0
       }
