@@ -7,26 +7,26 @@ async function postProducto(req, res){
 
 
     try{
-    const {nombre, fabricante, descripcion, image, categorias, stock,Uvendidas } = req.body;
+    const {nombre, descripcion, TipoServicio,precio, estado } = req.body;
     let objeto = {
         nombre: nombre,
         description: descripcion,
-        fabricante: fabricante,
-        categorias:categorias, 
-        stock: stock
+        precio: precio,
+        TipoServicio:TipoServicio, 
+        estado: estado
     }
     console.log("recibe la info")
     console.log(objeto);
     //si falta algun dato se rechaza
-    if(!nombre || !descripcion || !categorias  || !fabricante ){
-        return res.status(401).send("Missing info");
+    if(!nombre || !descripcion || !TipoServicio ||!precio){
+        return res.status(401).send("Falta información");
     }
     console.log("se verifica que no falte nada")
     let existencia = await revisionExistencia(objeto.nombre)
     if(existencia){
         console.log("se procede a crear el producto")
         const product = await Producto.findOrCreate({
-            where: {nombre, descripcion, categorias, fabricante, stock}
+            where: {nombre, descripcion, TipoServicio, precio, estado}
         })
         console.log(product)
         let productI = await Producto.findAll({     
