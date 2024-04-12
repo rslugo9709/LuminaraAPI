@@ -4,7 +4,7 @@ const { Op } = require('sequelize');
 const {Producto} = require("../../db");
 
 
-async function updateProducto(req, res){
+async function updateProduct(req, res){
 
     const {id, nombre, descripcion, TipoServicio,precio, estado } = req.body;
 
@@ -46,4 +46,4 @@ async function updateProducto(req, res){
 }
 
 
-module.exports = {updateProducto};
+module.exports = {updateProduct};

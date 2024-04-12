@@ -23,15 +23,15 @@ const {deleteProductById} = require("../controllers/deletes/deleteProduct");
 //importar updates
 const {updateEmployee} = require("../controllers/updates/updateEmployee");
 const {updateClient} = require("../controllers/updates/updateClient");
-const {updateService} = require("../controllers/updates/updateService");
+const {updateProduct} = require("../controllers/updates/updateProduct");
 
 router.post("/crearproducto/", postProducto);
 router.post("/crearCliente/",postCliente);
 router.post("/crearEmpleado/",postEmpleado);
 
-router.update("/actualizarEmpleado/",updateEmployee)
-router.update("/actualizarCliente/",updateClient)
-router.update("/actualizarServicio/",updateService)
+router.put("/actualizarEmpleado/",updateEmployee)
+router.put("/actualizarCliente/",updateClient)
+router.put("/actualizarServicio/",updateProduct)
 
 router.get("/clientes/name", getClientByName);
 router.get("/clientes/id", getClientById);
