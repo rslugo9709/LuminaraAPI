@@ -33,6 +33,7 @@ module.exports = (sequelize) => {
       },
       estado:{
         type: DataTypes.BOOLEAN,
+        allowNull: true,
         defaultValue: true
       }
   
