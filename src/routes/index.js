@@ -14,6 +14,9 @@ const {getEmpleadoName} = require("../controllers/gets/getEmpleadoName");
 const {postProducto} = require("../controllers/posts/postProducto");
 const {postCliente} = require("../controllers/posts/postCliente");
 const {postEmpleado} = require("../controllers/posts/postEmpleado");
+const {deleteClientById} = require("../controllers/deletes/deleteClient")
+const {deleteEmpleadoById} = require("../controllers/deletes/deleteEmployee")
+const {deleteProductById} = require("../controllers/deletes/deleteProduct")
 
 router.get("/clientes/name", getClientByName);
 router.get("/clientes/id", getClientById);
@@ -28,6 +31,9 @@ router.post("/crearproducto/", postProducto);
 router.post("/crearCliente/",postCliente);
 router.post("/crearEmpleado/",postEmpleado);
 
+router.delete("/eliminarCliente/", deleteClientById);
+router.delete("/eliminarEmpleado/", deleteEmpleadoById);
+router.delete("/eliminarProducto/", deleteProductById);
 
 
 module.exports = router;
