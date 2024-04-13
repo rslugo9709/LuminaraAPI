@@ -7,24 +7,27 @@ async function postCliente(req, res){
 
 
     try{
-    const {nombre, telefono, correo, direccion, activoDesde } = req.body;
+    const {nombre, tDocumento, nDocumento, telefono, correo, direccion,tPago } = req.body;
     const today = new Date();
     const formattedDate = today.toLocaleDateString('en-US', {
         month: '2-digit',
-        day: '2-digit',
+        day: '2-digit', 
         year: 'numeric'
       });
     let objeto = {
         nombre: nombre,
         telefono: telefono,
+        tDocumento: tDocumento,
+        nDocumento: nDocumento,
         correo: correo,
         direccion: direccion,
-        activoDesde: formattedDate
+        activoDesde: formattedDate,
+        tPago: tPago
     }
     console.log("recibe la info")
     console.log(objeto);
     //si falta algun dato se rechaza
-    if(!nombre || !telefono || !correo  || !direccion ){
+    if(!nombre || !telefono || !correo  || !direccion ||!tPago ||!tDocumento, !nDocumento){
         return res.status(401).send("Missing info");
     }
     console.log("se verifica que no falte nada")
