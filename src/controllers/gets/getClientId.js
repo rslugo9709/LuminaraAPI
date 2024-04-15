@@ -10,7 +10,10 @@ async function getClientById(req, res){
     
 
     try {
-        const cliente = await Cliente.findByPk(id)
+        const cliente = await Cliente.findByPk({where:{
+            id: id,
+            borrado: false
+         }})
 
         return res.status(200).json(cliente)
     } catch (error) {

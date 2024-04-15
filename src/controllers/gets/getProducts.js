@@ -9,7 +9,9 @@ async function getProducts(req, res){
 
     try {
         const productos = await Producto.findAll({
-            
+            where: {
+                borrado: false // Exclude clients with deleted: true
+              },
             include: [
                 {
                     model: Cliente,
