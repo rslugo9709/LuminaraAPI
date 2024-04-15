@@ -14,7 +14,8 @@ async function getEmpleadoName(req, res){
             where: {
                 name:{
                     [Op.iLike]: `%${fName}%`
-                }
+                },
+                borrado: false
             },
             include: [
                 {

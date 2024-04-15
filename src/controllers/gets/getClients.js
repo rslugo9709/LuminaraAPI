@@ -9,7 +9,9 @@ async function getClients(req, res){
 
     try {
         const clientes = await Cliente.findAll({
-            
+            where: {
+                borrado: false // Exclude clients with deleted: true
+              },
             include: [
                 {
                     model: Empleado,

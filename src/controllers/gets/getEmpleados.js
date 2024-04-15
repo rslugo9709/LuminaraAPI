@@ -9,7 +9,9 @@ async function getEmpleados(req, res){
 
     try {
         const empleados = await Empleado.findAll({
-            
+            where: {
+                borrado: false // Exclude clients with deleted: true
+              },
             include: [
                 {
                     model: Cliente,

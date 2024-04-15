@@ -11,7 +11,8 @@ async function getEmpleadoById(req, res){
 
     try {
         const empleado = await Empleado.findByPk({where:{
-            id: id
+            id: id,
+            borrado: false
          }})
 
         return res.status(200).json(empleado)
