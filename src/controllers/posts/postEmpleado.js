@@ -16,11 +16,17 @@ async function postEmpleado(req, res){
       });
 
     console.log("recibe la info")
-    console.log(objeto);
+    try {
+        console.log(objeto);
+    } catch (error) {
+        console.log("Aqui estaba el error");
+    }
+    
     //si falta algun dato se rechaza
     if(!nombre || !telefono || !correo  || !direccion || !cargo || !salario ){
         return res.status(401).send("Missing info");
     }
+    console.log("Antes de llegar al obj");
     let objeto = {
         nombre: nombre,
         telefono: telefono,
@@ -31,11 +37,13 @@ async function postEmpleado(req, res){
         fechaIngreso: fechaIngreso,
         
     }
+    console.log("Despues de llegar al obj");
     if(!fechaIngreso){
-        fechaIngreso = formattedDate
+        objeto.fechaIngreso = formattedDate
     }
     console.log("se verifica que no falte nada")
-    let existencia = await revisionExistencia(objeto.nombre)
+    const existencia = await revisionExistencia(objeto.nombre)
+
     if(existencia){
         console.log("se procede a crear el empleado")
         const empleado = await Empleado.findOrCreate({
