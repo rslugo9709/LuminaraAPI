@@ -6,38 +6,19 @@ const {Empleado} = require("../../db");
 
 async function updateEmployee(req, res){
 
-    const {id, nombre, telefono, correo, direccion, salario, cargo, fechaIngreso } = req.body;
-
+    const {id, nombre, telefono, correo, direccion, salario, cargo, fechaIngreso, activo } = req.body;
+    console.log(id);
+    //return res.status(200).json(req.body)
     try {
         const empleado = await Empleado.findByPk(id)
 
         if (!empleado) {
             
-            return res.status(404).json({ message: error.message });
+            return res.status(404).json({ message: "Empleado no encontrado"});
         }
-        //Validamos que no haya llegado nada vacio, en caso tal se coloca la informacion original
-        if(!nombre){
-            nombre = empleado.nombre;
-        }
-        if(!telefono){
-            telefono = empleado.telefono;
-        }
-        if(!correo){
-            direccion = empleado.direccion;
-        }
-        if(!salario){
-            salario = empleado.salario;
-        }
-        if(!cargo){
-            cargo = empleado.cargo;
-        }
-        if(!fechaIngreso){
-            fechaIngreso = empleado.fechaIngreso;
-        }
-
 
   
-        await empleado.update({ nombre, telefono, correo, direccion, salario, cargo, fechaIngreso });
+        await empleado.update({ nombre, telefono, correo, direccion, salario, cargo, fechaIngreso, activo });
 
 
         return res.status(200).json({message: "Empleado actualizado exitosamente"})
