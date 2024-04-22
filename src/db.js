@@ -42,7 +42,7 @@ const { Cliente, Empleado, Producto, User } = sequelize.models;
 Producto.belongsToMany(Cliente, {through: "producto_cliente",timestamps: false });
 Cliente.belongsToMany(Empleado, {through: "cliente_empleado",timestamps: false });
 Empleado.belongsToMany(Cliente, {through: "cliente_empleado",timestamps: false });
-User.hasOne(Cliente);
+User.hasOne(Cliente, {foreignKey: 'username',as: 'client'});
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

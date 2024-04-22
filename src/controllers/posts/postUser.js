@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const { Sequelize } = require('sequelize');
-const {Cliente, User} = require("../../db");
+const {User} = require("../../db");
 
 async function postUser(req, res){
 
@@ -68,4 +68,4 @@ async function revisionExistencia(username){
     
 } 
 
-module.exports = {postCliente};
+module.exports = {postUser};
