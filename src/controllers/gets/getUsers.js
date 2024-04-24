@@ -1,30 +1,27 @@
 const axios = require("axios");
 const { Op } = require('sequelize');
 
-const {Cliente,User} = require("../../db");
+const {Cliente, User} = require("../../db");
 
-async function getUser(req, res){
+async function getUsers(req, res){
 
 
-    const {username} = req.query;
-   
 
     try {
-        const user = await User.findOne({
+        const usuarios = await User.findAll({
             where: {
-                username: username
-            },
+                borrado: false // Exclude clients with deleted: true
+              },
             include: [
                 {
                     model: Cliente,
-                    as: 'client',
+                    as: "client",
                     attributes: ["id"]
                 }
-            ]
-            
+            ],
         })
 
-        return res.status(200).json(user)
+        return res.status(200).json(usuarios)
     } catch (error) {
         
         res.status(500).json({message: error.message})
@@ -34,4 +31,4 @@ async function getUser(req, res){
 }
 
 
-module.exports = {getUser};
+module.exports = {getUsers};

@@ -12,6 +12,8 @@ const {getProductName} = require("../controllers/gets/getProductName");
 const {getEmpleados} = require("../controllers/gets/getEmpleados");
 const {getEmpleadoById} = require("../controllers/gets/getEmpleadoId");
 const {getEmpleadoName} = require("../controllers/gets/getEmpleadoName");
+const {getUsers} = require("../controllers/gets/getUsers");
+const {getUser} = require("../controllers/gets/getUser")
 //importar los posts
 const {postProducto} = require("../controllers/posts/postProducto");
 const {postCliente} = require("../controllers/posts/postCliente");
@@ -41,7 +43,8 @@ router.get("/productos/name", getProductName);
 router.get("/empleados/", getEmpleados);
 router.get("/empleados/name", getEmpleadoName);
 router.get("/empleados/id", getEmpleadoById);
-
+router.get("/usuarios/", getUsers);
+router.get("usuario/", getUser);
 
 
 router.delete("/eliminarCliente/", deleteClientById);
