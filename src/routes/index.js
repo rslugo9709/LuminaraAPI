@@ -18,6 +18,7 @@ const {getUser} = require("../controllers/gets/getUser")
 const {postProducto} = require("../controllers/posts/postProducto");
 const {postCliente} = require("../controllers/posts/postCliente");
 const {postEmpleado} = require("../controllers/posts/postEmpleado");
+const {postUser} = require("../controllers/posts/postUser");
 //importar deletes
 const {deleteClientById} = require("../controllers/deletes/deleteClient");
 const {deleteEmpleadoById} = require("../controllers/deletes/deleteEmployee");
@@ -26,14 +27,17 @@ const {deleteProductById} = require("../controllers/deletes/deleteProduct");
 const {updateEmployee} = require("../controllers/updates/updateEmployee");
 const {updateClient} = require("../controllers/updates/updateClient");
 const {updateProduct} = require("../controllers/updates/updateProduct");
+const { getAccess } = require('../controllers/gets/getAccess');
 
 router.post("/crearproducto/", postProducto);
 router.post("/crearCliente/",postCliente);
 router.post("/crearEmpleado/",postEmpleado);
+router.post("/crearUsuario/", postUser);
 
-router.put("/actualizarEmpleado/",updateEmployee)
-router.put("/actualizarCliente/",updateClient)
-router.put("/actualizarServicio/",updateProduct)
+router.put("/actualizarEmpleado/",updateEmployee);
+router.put("/actualizarCliente/",updateClient);
+router.put("/actualizarServicio/",updateProduct);
+
 
 router.get("/clientes/name", getClientByName);
 router.get("/clientes/id", getClientById);
@@ -45,6 +49,7 @@ router.get("/empleados/name", getEmpleadoName);
 router.get("/empleados/id", getEmpleadoById);
 router.get("/usuarios/", getUsers);
 router.get("usuario/", getUser);
+router.get("/login/", getAccess)
 
 
 router.delete("/eliminarCliente/", deleteClientById);

@@ -1,13 +1,18 @@
 const axios = require("axios");
 
 const { Sequelize } = require('sequelize');
-const {User} = require("../../db");
+const {User,Cliente} = require("../../db");
 
 async function postUser(req, res){
 
 
     try{
-    const {username, password } = req.body;
+    User.describe().then(description => {
+          console.log(description); // Muestra la descripción de la tabla en la consola
+        }).catch(error => {
+           console.error('Error al describir la tabla:', error); // Maneja errores si los hay
+        });
+    const {username, password, id } = req.body;
     const today = new Date();
     const formattedDate = today.toLocaleDateString('en-US', {
         month: '2-digit',
@@ -18,6 +23,7 @@ async function postUser(req, res){
         username: username,
         password: password,
         activoDesde: formattedDate,
+        userId: id
         
     }
     console.log("recibe la info")

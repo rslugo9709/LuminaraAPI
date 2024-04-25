@@ -11,14 +11,7 @@ async function getUsers(req, res){
         const usuarios = await User.findAll({
             where: {
                 borrado: false // Exclude clients with deleted: true
-              },
-            include: [
-                {
-                    model: Cliente,
-                    as: "client",
-                    attributes: ["id"]
-                }
-            ],
+              }
         })
 
         return res.status(200).json(usuarios)
