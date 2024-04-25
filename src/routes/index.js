@@ -23,6 +23,7 @@ const {postUser} = require("../controllers/posts/postUser");
 const {deleteClientById} = require("../controllers/deletes/deleteClient");
 const {deleteEmpleadoById} = require("../controllers/deletes/deleteEmployee");
 const {deleteProductById} = require("../controllers/deletes/deleteProduct");
+const {deleteUserById} = require("../controllers/deletes/deleteUser");
 //importar updates
 const {updateEmployee} = require("../controllers/updates/updateEmployee");
 const {updateClient} = require("../controllers/updates/updateClient");
@@ -55,6 +56,8 @@ router.get("/login/", getAccess)
 router.delete("/eliminarCliente/", deleteClientById);
 router.delete("/eliminarEmpleado/", deleteEmpleadoById);
 router.delete("/eliminarProducto/", deleteProductById);
+router.delete("/eliminarUsuario/", deleteUserById);
+
 
 
 module.exports = router;

@@ -1,25 +1,25 @@
 const axios = require("axios");
 const { Op } = require('sequelize');
 
-const {Cliente, Empleado} = require("../../db");
+const {User} = require("../../db");
 
 //Aqui se ejecuta el borrado logico, que no destruye el registro sino que cambia 
-async function deleteClientById(req, res){
+async function deleteUserById(req, res){
 
 
-    const {id} = req.query;
+    const {username} = req.query;
     const borrado = true; 
     try {
-        const cliente = await Cliente.findByPk(id)
+        const user = await User.findByPk(username)
         
-        if (!cliente) {
+        if (!user) {
             
             return res.status(404).json({ message: error.message });
         }
-        await cliente.update({ borrado });
+        await user.update({ borrado });
 
 
-        return res.status(200).json({message: "cliente borrado existosamente"})
+        return res.status(200).json({message: "Usuario borrado existosamente"})
     } catch (error) {
         
         res.status(500).json({message: error.message})
@@ -29,4 +29,4 @@ async function deleteClientById(req, res){
 }
 
 
-module.exports = {deleteClientById};
+module.exports = {deleteUserById};
