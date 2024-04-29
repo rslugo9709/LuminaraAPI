@@ -8,12 +8,13 @@ async function postProducto(req, res){
 
     try{
     const {nombre, descripcion, TipoServicio,precio, estado } = req.body;
+
     let objeto = {
         nombre: nombre,
         description: descripcion,
         precio: precio,
         TipoServicio:TipoServicio, 
-        estado: estado
+        
     }
     console.log("recibe la info")
     console.log(objeto);
@@ -26,7 +27,7 @@ async function postProducto(req, res){
     if(existencia){
         console.log("se procede a crear el producto")
         const product = await Producto.findOrCreate({
-            where: {nombre, descripcion, TipoServicio, precio, estado}
+            where: {nombre, descripcion, TipoServicio, precio}
         })
         console.log(product)
         let productI = await Producto.findAll({     
