@@ -7,11 +7,13 @@ async function postUser(req, res){
 
 
     try{
+    /*
     User.describe().then(description => {
           console.log(description); // Muestra la descripción de la tabla en la consola
         }).catch(error => {
            console.error('Error al describir la tabla:', error); // Maneja errores si los hay
         });
+        */
     const {username, password, id } = req.body;
     const today = new Date();
     const formattedDate = today.toLocaleDateString('en-US', {

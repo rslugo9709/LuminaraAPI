@@ -29,6 +29,7 @@ const {updateEmployee} = require("../controllers/updates/updateEmployee");
 const {updateClient} = require("../controllers/updates/updateClient");
 const {updateProduct} = require("../controllers/updates/updateProduct");
 const { getAccess } = require('../controllers/gets/getAccess');
+const { updateUser } = require('../controllers/updates/updateUser');
 
 router.post("/crearproducto/", postProducto);
 router.post("/crearCliente/",postCliente);
@@ -38,7 +39,7 @@ router.post("/crearUsuario/", postUser);
 router.put("/actualizarEmpleado/",updateEmployee);
 router.put("/actualizarCliente/",updateClient);
 router.put("/actualizarServicio/",updateProduct);
-
+router.put("/actualizarUsuario/", updateUser)
 
 router.get("/clientes/name", getClientByName);
 router.get("/clientes/id", getClientById);
@@ -49,7 +50,7 @@ router.get("/empleados/", getEmpleados);
 router.get("/empleados/name", getEmpleadoName);
 router.get("/empleados/id", getEmpleadoById);
 router.get("/usuarios/", getUsers);
-router.get("usuario/", getUser);
+router.get("/usuario/", getUser);
 router.get("/login/", getAccess)
 
 
